@@ -1,0 +1,66 @@
+// @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap');
+
+$white: #fff;
+$black: #000;
+$blue: #434399;
+$red: #E24444;
+$disable: rgba(0, 0, 0, 0.54);
+@mixin default-font {
+  font-family: Rubik, serif;
+  font-style: normal;
+  font-weight: 300;
+}
+
+@mixin hoverlink {
+  background-color: #eee;
+}
+
+@mixin _button($bgColor, $spancolor) {
+  background-color: $bgColor !important;
+  margin-top: 20px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  border-radius: 50px;
+  box-shadow: none;
+
+  span {
+    @include default-font;
+    color: $spancolor !important;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+  }
+}
+
+body {
+  background: #e5e5e5;
+}
+
+html {
+  font-family: 'Rubik', sans-serif;
+  font-size: 16px;
+  word-spacing: 1px;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.w100 {
+  width: 100%;
+}
+
+.fit-content {
+  width: fit-content;
+}
+
