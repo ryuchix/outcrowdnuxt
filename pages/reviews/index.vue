@@ -9,40 +9,35 @@
       <v-spacer></v-spacer>
     </v-toolbar>
 
-    <v-list-item class="grow lists" v-for="(event, index) in events" :key="index">
-      <v-list-item-avatar color="grey darken-3 list-image" v-ripple @click="$router.push({path: '/events/event/' + event.id})">
-        <v-img
-          class="elevation-6"
-          :src="event.image"></v-img>
-      </v-list-item-avatar>
+    <v-card class="mx-auto">
+      <v-list-item>
+        <v-list-item-avatar color="grey" v-ripple >
+          <img class="post-avatar" src="https://cdn.vuetifyjs.com/images/cards/mountain.jpg" />
+        </v-list-item-avatar>
+        <v-list-item-content>
+          <v-list-item-title v-ripple>sssssss</v-list-item-title>
+          <v-list-item-subtitle>2h</v-list-item-subtitle>
+        </v-list-item-content>
+        <v-spacer></v-spacer>
+        <star-rating :show-rating="showrating" read-only :rating="rating" v-bind:star-size="20"></star-rating>
+      </v-list-item>
+      <v-spacer></v-spacer>
+      <v-card-text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus distinctio harum, nulla placeat, rerum totam magni porro eos impedit incidunt, accusantium inventore animi pariatur laborum deleniti officiis nesciunt debitis perspiciatis.</v-card-text>
+      <v-card-actions>
+        <div class="event-name">
+          Event name
+        </div>
+      </v-card-actions>
+    </v-card>
 
-      <v-list-item-content>
-        <v-list-item-title>
-          <div class="d-flex flex-column">
-            <div class="event-name" v-ripple @click="$router.push({path: '/events/event/' + event.id})"> {{ event.name }} </div>
-            <div class="flex-row align-center row mt-n4">
-              <div class="col-8 flex-column"> 
-                <div class="event-date">{{ event.date }} {{ event.time }}</div>
-                <div class="event-location">{{ event.location }}</div>
-              </div>
-              <div class="col-4 hosting-star"> 
-                <v-btn text @click="isInterested(event.id, events, index, star = !event.interested)">
-                  <v-icon v-if="event.interested" style="color: #FFB800;">{{ event.interested ? unclickStar : clickStar }}</v-icon>
-                  <v-icon v-if="!event.interested">{{ event.interested ? unclickStar : clickStar }}</v-icon>
-                </v-btn>
-              </div>
-            </div>
-          </div>
-        </v-list-item-title>
 
-      </v-list-item-content>
-    </v-list-item>
   </v-app>
   </div>
 </template>
 <script>
 import { API_URL, HEADERS} from "@/store/config";
 import axios from "axios";
+import StarRating from 'vue-star-rating/src'
 
 export default {
   name: "Reviews",
@@ -51,11 +46,17 @@ export default {
     title: 'Reviews',
   },
   middleware: 'auth',
+  components: {
+    StarRating,
+  },
   data() {
     return {
         valid: true,
         loading: false,
-        events: []
+        events: [],
+        closeOnContentClick: true,
+        rating: 2,
+        showrating: false
     };
   },
   methods: {
@@ -65,10 +66,17 @@ export default {
 </script>
 <style lang="scss">
 .reviews {
+  background-color: #e5e5e5 !important;
   .v-toolbar {
     .v-icon {
       color: #434399;
     }
+  }
+  .v-application--wrap {
+    width: 100%;
+    padding: 12px;
+    margin-right: auto;
+    margin-left: auto;
   }
   .v-toolbar__title {
     color: #434399;
@@ -96,6 +104,11 @@ export default {
 
       color: rgba(0, 0, 0, 0.87);
     }
+  }
+  .v-card {
+    margin-bottom: 10px;
+    box-shadow: none !important;
+    margin-top: 60px;
   }
   .lists {
     .v-list-item__content {
@@ -149,6 +162,17 @@ export default {
 
       color: #000000;
     }
+  }
+  .event-name {
+    font-weight: normal;
+    font-size: 10px;
+    line-height: 12px;
+
+    color: #000000;
+
+    mix-blend-mode: normal;
+    opacity: 0.54;
+    margin-left: 10px;
   }
 }
 </style>

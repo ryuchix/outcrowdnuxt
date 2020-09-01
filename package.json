@@ -21,6 +21,7 @@
     "swiper": "^5.4.5",
     "vue-awesome-swiper": "^4.1.1",
     "vue-infinite-loading": "^2.4.5",
+    "vue-star-rating": "^1.6.1",
     "vuelidate": "^0.7.5"
   },
   "devDependencies": {
